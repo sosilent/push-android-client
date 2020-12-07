@@ -1,4 +1,4 @@
-package com.unitrack.push.client.demo.udp;
+package com.unitrack.push.client.demo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

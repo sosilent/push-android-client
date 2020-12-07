@@ -1,6 +1,6 @@
-package com.unitrack.push.client.demo.udp.receiver;
+package com.unitrack.push.client.demo.receiver;
 
-import com.unitrack.push.client.demo.udp.service.OnlineService;
+import com.unitrack.push.client.demo.service.OnlineService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

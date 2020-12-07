@@ -1,4 +1,4 @@
-package com.unitrack.push.client.demo.udp.service;
+package com.unitrack.push.client.demo.service;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -20,12 +20,12 @@ import android.widget.Toast;
 import com.unitrack.push.client.appuser.Message;
 import com.unitrack.push.client.appuser.UDPClientBase;
 
-import com.unitrack.push.client.demo.udp.DateTimeUtil;
-import com.unitrack.push.client.demo.udp.MainActivity;
-import com.unitrack.push.client.demo.udp.Params;
-import com.unitrack.push.client.demo.udp.R;
-import com.unitrack.push.client.demo.udp.Util;
-import com.unitrack.push.client.demo.udp.receiver.TickAlarmReceiver;
+import com.unitrack.push.client.demo.DateTimeUtil;
+import com.unitrack.push.client.demo.MainActivity;
+import com.unitrack.push.client.demo.Params;
+import com.unitrack.push.client.demo.R;
+import com.unitrack.push.client.demo.Util;
+import com.unitrack.push.client.demo.receiver.TickAlarmReceiver;
 
 import java.nio.ByteBuffer;
 
