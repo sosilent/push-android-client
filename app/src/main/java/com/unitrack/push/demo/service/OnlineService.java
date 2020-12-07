@@ -1,4 +1,4 @@
-package com.unitrack.push.client.demo.udp.service;
+package com.unitrack.push.demo.service;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -18,14 +18,14 @@ import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.unitrack.push.client.appuser.Message;
-import com.unitrack.push.client.appuser.UDPClientBase;
+import com.unitrack.push.client.appuser.TCPClientBase;
 
-import com.unitrack.push.client.demo.udp.DateTimeUtil;
-import com.unitrack.push.client.demo.udp.MainActivity;
-import com.unitrack.push.client.demo.udp.Params;
-import com.unitrack.push.client.demo.udp.R;
-import com.unitrack.push.client.demo.udp.Util;
-import com.unitrack.push.client.demo.udp.receiver.TickAlarmReceiver;
+import com.unitrack.push.demo.DateTimeUtil;
+import com.unitrack.push.demo.MainActivity;
+import com.unitrack.push.demo.Params;
+import com.unitrack.push.client.R;
+import com.unitrack.push.demo.Util;
+import com.unitrack.push.demo.receiver.TickAlarmReceiver;
 
 import java.nio.ByteBuffer;
 
@@ -37,11 +37,11 @@ public class OnlineService extends Service {
 	Client client;
 	private String channelId = OnlineService.class.getName();
 
-	public class Client extends UDPClientBase {
+	public class Client extends TCPClientBase {
 
 		public Client(byte[] uuid, String serverAddr, int serverPort)
 				throws Exception {
-			super(uuid, serverAddr, serverPort);
+			super(uuid, serverAddr, serverPort, 10);
 
 		}
 
@@ -216,7 +216,7 @@ public class OnlineService extends Service {
 			notificationManager.createNotificationChannel(channel);
 		}
 
-		Intent intent = new Intent(this,MainActivity.class);
+		Intent intent = new Intent(this, MainActivity.class);
 		PendingIntent pi = PendingIntent.getActivity(this, 0,intent, PendingIntent.FLAG_ONE_SHOT);
 
 		NotificationCompat.Builder notification = new NotificationCompat.Builder(this, channelId)

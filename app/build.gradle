@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.unitrack.push.client.demo.udp"
+        applicationId "com.unitrack.push.client"
         minSdkVersion 28
         targetSdkVersion 29
     }
