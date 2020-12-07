@@ -34,12 +34,12 @@ public class OnlineService extends Service {
 	protected PendingIntent tickPendIntent;
 	protected TickAlarmReceiver tickAlarmReceiver = new TickAlarmReceiver();
 	WakeLock wakeLock;
-	MyUdpClient myUdpClient;
+	Client client;
 	private String channelId = OnlineService.class.getName();
 
-	public class MyUdpClient extends UDPClientBase {
+	public class Client extends UDPClientBase {
 
-		public MyUdpClient(byte[] uuid, String serverAddr, int serverPort)
+		public Client(byte[] uuid, String serverAddr, int serverPort)
 				throws Exception {
 			super(uuid, serverAddr, serverPort);
 
@@ -138,11 +138,11 @@ public class OnlineService extends Service {
 	}
 	
 	protected void setPkgsInfo(){
-		if(this.myUdpClient == null){
+		if(this.client == null){
 			return;
 		}
-		long sent = myUdpClient.getSentPackets();
-		long received = myUdpClient.getReceivedPackets();
+		long sent = client.getSentPackets();
+		long received = client.getReceivedPackets();
 		SharedPreferences account = this.getSharedPreferences(Params.DEFAULT_PRE_NAME,Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = account.edit();
 		editor.putString(Params.SENT_PKGS, ""+sent);
@@ -162,13 +162,14 @@ public class OnlineService extends Service {
 				|| userName == null || userName.trim().length() == 0){
 			return;
 		}
-		if(this.myUdpClient != null){
-			try{myUdpClient.stop();}catch(Exception e){}
+		if(this.client != null){
+			try{
+				client.stop();}catch(Exception e){}
 		}
 		try{
-			myUdpClient = new MyUdpClient(Util.md5Byte(userName), serverIp, Integer.parseInt(serverPort));
-			myUdpClient.setHeartbeatInterval(50);
-			myUdpClient.start();
+			client = new Client(Util.md5Byte(userName), serverIp, Integer.parseInt(serverPort));
+			client.setHeartbeatInterval(50);
+			client.start();
 			SharedPreferences.Editor editor = account.edit();
 			editor.putString(Params.SENT_PKGS, "0");
 			editor.putString(Params.RECEIVE_PKGS, "0");
