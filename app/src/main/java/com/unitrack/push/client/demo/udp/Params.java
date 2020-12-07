@@ -1,4 +1,4 @@
-package org.ddpush.client.demo.udp;
+package com.unitrack.push.client.demo.udp;
 
 public class Params {
 	public static String DEFAULT_PRE_NAME = "defaultAccount";

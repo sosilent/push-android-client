@@ -1,6 +1,6 @@
-package org.ddpush.client.demo.udp;
+package com.unitrack.push.client.demo.udp;
 
-import org.ddpush.client.demo.udp.service.OnlineService;
+import com.unitrack.push.client.demo.udp.service.OnlineService;
 
 import android.app.Activity;
 import android.content.Context;

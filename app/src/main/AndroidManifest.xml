@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.ddpush.client.demo.udp"
+    package="com.unitrack.push.client.demo.udp"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="org.ddpush.client.demo.udp.MainActivity"
+            android:name="com.unitrack.push.client.demo.udp.MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan|stateHidden" >
             <intent-filter>
@@ -30,14 +30,14 @@
             </intent-filter>
         </activity>
         <service
-            android:name="org.ddpush.client.demo.udp.service.OnlineService" ></service>
+            android:name="com.unitrack.push.client.demo.udp.service.OnlineService" ></service>
 
         <receiver
-            android:name="org.ddpush.client.demo.udp.receiver.TickAlarmReceiver" >
+            android:name="com.unitrack.push.client.demo.udp.receiver.TickAlarmReceiver" >
 		</receiver>
 		
         <receiver
-            android:name="org.ddpush.client.demo.udp.receiver.ConnectivityAlarmReceiver"
+            android:name="com.unitrack.push.client.demo.udp.receiver.ConnectivityAlarmReceiver"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -45,7 +45,7 @@
 		</receiver>
 		
         <receiver
-            android:name="org.ddpush.client.demo.udp.receiver.BootAlarmReceiver"
+            android:name="com.unitrack.push.client.demo.udp.receiver.BootAlarmReceiver"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
