@@ -39,9 +39,9 @@ public class OnlineService extends Service {
 
 	public class Client extends UDPClientBase {
 
-		public Client(byte[] uuid, String serverAddr, int serverPort)
+		public Client(int appId, byte[] uuid, String serverAddr, int serverPort)
 				throws Exception {
-			super(uuid, serverAddr, serverPort);
+			super(appId, uuid, serverAddr, serverPort);
 
 		}
 
@@ -69,16 +69,16 @@ public class OnlineService extends Service {
 				notifyUser(16,"Push通用推送信息: " + no,"时间："+DateTimeUtil.getCurDateTime(),"收到通用推送信息");
 			}
 			if(message.getCmd() == 17){// 0x11 分组推送信息
-				long msg = ByteBuffer.wrap(message.getData(), 5, 8).getLong();
+				long msg = ByteBuffer.wrap(message.getData(), Message.SERVER_MESSAGE_MIN_LENGTH, 8).getLong();
 				int no = message.getSerialNo();
 				notifyUser(17,"Push分组推送信息: " + no,""+msg,"收到通用推送信息");
 			}
 			if(message.getCmd() == 32){// 0x20 自定义推送信息
 				String str = null;
 				try{
-					str = new String(message.getData(),5,message.getContentLength(), "UTF-8");
+					str = new String(message.getData(),Message.SERVER_MESSAGE_MIN_LENGTH, message.getContentLength(), "UTF-8");
 				}catch(Exception e){
-					str = Util.convert(message.getData(),5,message.getContentLength());
+					str = Util.convert(message.getData(),Message.SERVER_MESSAGE_MIN_LENGTH, message.getContentLength());
 				}
 				int no = message.getSerialNo();
 				notifyUser(32,"Push自定义推送信息:" + no,""+str,"收到自定义推送信息");
@@ -167,7 +167,8 @@ public class OnlineService extends Service {
 				client.stop();}catch(Exception e){}
 		}
 		try{
-			client = new Client(Util.md5Byte(userName), serverIp, Integer.parseInt(serverPort));
+			int appId = 1;
+			client = new Client(appId, Util.md5Byte(userName), serverIp, Integer.parseInt(serverPort));
 			client.setHeartbeatInterval(50);
 			client.start();
 			SharedPreferences.Editor editor = account.edit();
