@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.unitrack.push.demo.MainActivity"
+            android:name="com.unitrack.push.client.demo.MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan|stateHidden" >
             <intent-filter>
@@ -30,14 +30,16 @@
             </intent-filter>
         </activity>
         <service
-            android:name="com.unitrack.push.demo.service.OnlineService" ></service>
+
+            android:name="com.unitrack.push.client.demo.service.OnlineService" ></service>
 
         <receiver
-            android:name="com.unitrack.push.demo.receiver.TickAlarmReceiver" >
+            android:name="com.unitrack.push.client.demo.receiver.TickAlarmReceiver" >
 		</receiver>
 		
         <receiver
-            android:name="com.unitrack.push.demo.receiver.ConnectivityAlarmReceiver"
+            android:name="com.unitrack.push.client.demo.receiver.ConnectivityAlarmReceiver"
+
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -45,7 +47,7 @@
 		</receiver>
 		
         <receiver
-            android:name="com.unitrack.push.demo.receiver.BootAlarmReceiver"
+            android:name="com.unitrack.push.client.demo.receiver.BootAlarmReceiver"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

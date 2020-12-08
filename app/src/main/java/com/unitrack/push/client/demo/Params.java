@@ -1,4 +1,4 @@
-package com.unitrack.push.demo;
+package com.unitrack.push.client.demo;
 
 public class Params {
 	public static String DEFAULT_PRE_NAME = "defaultAccount";

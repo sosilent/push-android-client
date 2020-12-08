@@ -1,7 +1,7 @@
-package com.unitrack.push.demo.receiver;
+package com.unitrack.push.client.demo.receiver;
 
-import com.unitrack.push.demo.Util;
-import com.unitrack.push.demo.service.OnlineService;
+import com.unitrack.push.client.demo.Util;
+import com.unitrack.push.client.demo.service.OnlineService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

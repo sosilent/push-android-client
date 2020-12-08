@@ -1,7 +1,4 @@
-package com.unitrack.push.demo;
-
-import com.unitrack.push.client.R;
-import com.unitrack.push.demo.service.OnlineService;
+package com.unitrack.push.client.demo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.unitrack.push.client.R;
 import com.unitrack.push.client.appserver.Pusher;
+import com.unitrack.push.client.demo.service.OnlineService;
 
 
 public class MainActivity extends Activity {
@@ -37,7 +36,8 @@ public class MainActivity extends Activity {
 	
 	private Handler handler;
 	private Runnable refresher;
-	
+
+	private int appId = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -374,7 +374,7 @@ public class MainActivity extends Activity {
 			try{
 				boolean result;
 				pusher = new Pusher(serverIp,port, 1000*5);
-				result = pusher.push0x10Message(uuid);
+				result = pusher.push0x10Message(appId, uuid);
 				if(result){
 					startSrv.putExtra("TEXT", "通用信息发送成功");
 				}else{
@@ -414,7 +414,7 @@ public class MainActivity extends Activity {
 			try{
 				boolean result;
 				pusher = new Pusher(serverIp,port, 1000*5);
-				result = pusher.push0x11Message(uuid,msg);
+				result = pusher.push0x11Message(appId, uuid,msg);
 				if(result){
 					startSrv.putExtra("TEXT", "分类信息发送成功");
 				}else{
@@ -456,7 +456,7 @@ public class MainActivity extends Activity {
 				
 				
 				pusher = new Pusher(serverIp,port, 1000*5);
-				result = pusher.push0x20Message(uuid,msg);
+				result = pusher.push0x20Message(appId, uuid,msg);
 				if(result){
 					startSrv.putExtra("TEXT", "自定义信息发送成功");
 				}else{

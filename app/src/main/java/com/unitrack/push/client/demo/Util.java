@@ -1,4 +1,4 @@
-package com.unitrack.push.demo;
+package com.unitrack.push.client.demo;
 
 import java.security.MessageDigest;
 
