@@ -372,10 +372,10 @@ public class MainActivity extends Activity {
 			Intent startSrv = new Intent(context, OnlineService.class);
 			startSrv.putExtra("CMD", "TOAST");
 			try{
-				boolean result;
+				int result;
 				pusher = new Pusher(serverIp,port, 1000*5);
 				result = pusher.push0x10Message(appId, uuid);
-				if(result){
+				if(result != 0){
 					startSrv.putExtra("TEXT", "通用信息发送成功");
 				}else{
 					startSrv.putExtra("TEXT", "发送失败！格式有误");
@@ -412,10 +412,10 @@ public class MainActivity extends Activity {
 			Intent startSrv = new Intent(context, OnlineService.class);
 			startSrv.putExtra("CMD", "TOAST");
 			try{
-				boolean result;
+				int result;
 				pusher = new Pusher(serverIp,port, 1000*5);
 				result = pusher.push0x11Message(appId, uuid,msg);
-				if(result){
+				if(result != 0){
 					startSrv.putExtra("TEXT", "分类信息发送成功");
 				}else{
 					startSrv.putExtra("TEXT", "发送失败！格式有误");
@@ -452,12 +452,10 @@ public class MainActivity extends Activity {
 			Intent startSrv = new Intent(context, OnlineService.class);
 			startSrv.putExtra("CMD", "TOAST");
 			try{
-				boolean result;
-				
-				
+				int result;
 				pusher = new Pusher(serverIp,port, 1000*5);
 				result = pusher.push0x20Message(appId, uuid,msg);
-				if(result){
+				if(result != 0){
 					startSrv.putExtra("TEXT", "自定义信息发送成功");
 				}else{
 					startSrv.putExtra("TEXT", "发送失败！格式有误");
